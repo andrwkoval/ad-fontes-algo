@@ -1,3 +1,4 @@
 Dynamic_Prog_paper.pdf
-.idea/
+.idea
 /data
+__pycache__
