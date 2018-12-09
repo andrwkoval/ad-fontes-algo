@@ -1,4 +1,4 @@
-from datasets import DATASET_4N_diff as dataset
+from datasets import dataset_4n_diff as dataset
 from itertools import chain, combinations
 
 AGENTS = {i for i in dataset.keys() if len(i) == 1}
