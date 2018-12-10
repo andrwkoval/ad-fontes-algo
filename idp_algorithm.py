@@ -1,5 +1,4 @@
 import pickle
-import time
 from itertools import chain, combinations
 from datasets import dataset_6n_diff as dataset
 import tracemalloc
@@ -61,7 +60,7 @@ def dp_csg(data):
 if __name__ == '__main__':
     # print(dp_csg(dataset))
 
-    with open("datasets/12_0_sample", "rb") as f:
+    with open("datasets/12_dataset0", "rb") as f:
         data1 = pickle.load(f)
 
     tracemalloc.start()

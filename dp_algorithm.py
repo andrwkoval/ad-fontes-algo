@@ -44,18 +44,18 @@ def dp_csg(data):
                 func2[key] = data[key]
 
     # step 3-4
-    coal_struct = []
+    coalition_structure = []
 
     def find_best(struct):
         if func1[struct] == struct:
-            coal_struct.append(struct)
+            coalition_structure.append(struct)
             return
         find_best(func1[struct][0])
         find_best(func1[struct][1])
 
     subset = max(agents, key=lambda x: len(x))
     find_best(subset)
-    return coal_struct, func2[subset]
+    return coalition_structure, func2[subset]
 
 
 if __name__ == '__main__':
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     # for stat in top_stats:
     #     print(stat)
 
-    with open("datasets/12_0_sample", "rb") as f:
+    with open("datasets/12_dataset0", "rb") as f:
         data1 = pickle.load(f)
 
     tracemalloc.start()
