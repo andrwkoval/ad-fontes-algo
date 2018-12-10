@@ -1,11 +1,10 @@
 import pickle
 from itertools import chain, combinations
-from datasets import dataset_6n_diff as dataset
 import tracemalloc
 
 
 def all_subsets(ss):
-    return tuple(chain(*map(lambda x: combinations(ss, x), range(1, len(ss)))))
+    return tuple(chain(*map(lambda x: combinations(ss, x), range(1, len(ss)//2+1))))
 
 
 def set_diff(key1, key2):
@@ -35,15 +34,16 @@ def dp_csg(data):
             subsets = all_subsets(parts)
             splittings += len(subsets)
             for ss in subsets:
-                if 1 <= len(ss) <= len(parts):
-                    if func2[ss] + func2[set_diff(parts, ss)] > maximum:
-                        maximum = func2[ss] + func2[set_diff(parts, ss)]
-                        best_coal = (ss, set_diff(parts, ss))
+                # if 1 <= len(ss) <= len(parts):
+                if func2[ss] + func2[set_diff(parts, ss)] > maximum:
+                    maximum = func2[ss] + func2[set_diff(parts, ss)]
+                    best_coal = (ss, set_diff(parts, ss))
             func1[parts] = best_coal
             func2[parts] = maximum
 
     # steps 3-4
     coalition_structure = []
+    print(splittings)
 
     def find_best(struct):
         if func1[struct] == struct:
@@ -58,9 +58,7 @@ def dp_csg(data):
 
 
 if __name__ == '__main__':
-    # print(dp_csg(dataset))
-
-    with open("datasets/12_dataset0", "rb") as f:
+    with open("datasets/{}_dataset0".format(12), "rb") as f:
         data1 = pickle.load(f)
 
     tracemalloc.start()

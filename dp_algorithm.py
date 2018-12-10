@@ -1,6 +1,5 @@
 import pickle
 from itertools import chain, combinations
-from datasets import dataset_6n_diff as dataset
 import tracemalloc
 
 tracemalloc.start()
@@ -59,14 +58,6 @@ def dp_csg(data):
 
 
 if __name__ == '__main__':
-    # print(dp_csg(dataset))
-    #
-    # snapshot = tracemalloc.take_snapshot()
-    # top_stats = snapshot.statistics('filename')
-    #
-    # for stat in top_stats:
-    #     print(stat)
-
     with open("datasets/12_dataset0", "rb") as f:
         data1 = pickle.load(f)
 
